@@ -1,6 +1,10 @@
 import Modal from 'react-modal';
+// import css from './ImageModal.module.css';
 
 const customStyles = {
+  overlay: {
+    backgroundColor: 'rgba(15, 15, 15, 0.9)',
+  },
   content: {
     top: '50%',
     left: '50%',
