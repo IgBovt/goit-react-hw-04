@@ -1,4 +1,5 @@
 import css from './SearchBar.module.css';
+import { GoSearch } from 'react-icons/go';
 
 export default function SearchBar({ onSearch }) {
   return (
@@ -8,12 +9,12 @@ export default function SearchBar({ onSearch }) {
           className={css.input}
           type="text"
           name="input"
-          autoComplete="off"
+          autoComplete="on"
           autoFocus
           placeholder="Search images and photos"
         />
         <button className={css.btn} type="submit">
-          Search
+          <GoSearch className={css.icon} />
         </button>
       </form>
     </header>

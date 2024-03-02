@@ -1,0 +1,9 @@
+.loader {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 40px;
+  width: 40px;
+  color: rgb(67, 96, 240, 0.8);
+  margin-top: 32px;
+}

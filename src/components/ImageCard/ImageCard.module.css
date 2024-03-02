@@ -1,0 +1,23 @@
+.container {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+}
+.img {
+  width: 320px;
+  height: 200px;
+}
+.textWrapper {
+  display: flex;
+  font-size: 14px;
+  color: gray;
+  gap: 8px;
+  justify-content: space-between;
+}
+.likes,
+.tags {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+}

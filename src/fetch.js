@@ -11,7 +11,8 @@ export async function fetchImages(searchQuery, page) {
       page,
       order_by: 'relevant',
       lang: 'en',
+      orientation: 'landscape',
     },
   });
-  return response.data.results;
+  return response.data;
 }
