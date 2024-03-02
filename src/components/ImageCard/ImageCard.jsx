@@ -2,9 +2,14 @@ import css from './ImageCard.module.css';
 import { AiOutlineLike } from 'react-icons/ai';
 import { LiaHashtagSolid } from 'react-icons/lia';
 
-export default function ImageCard({ image }) {
+export default function ImageCard({ image, openModal, getImage }) {
+  function handleClick() {
+    getImage(image.urls.regular);
+    openModal();
+  }
+
   return (
-    <div className={css.container}>
+    <div className={css.container} onClick={handleClick}>
       <img
         className={css.img}
         src={image.urls.small}
