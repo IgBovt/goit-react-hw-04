@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react';
 import ImageGallery from '../ImageGallery/ImageGallery';
 import SearchBar from '../SearchBar/SearchBar';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
-import LoadMoreButton from '../LoadMoreButton/LoadMoreButton';
+import LoadMoreButton from '../LoadMoreBtn/LoadMoreBtn';
 import ImageModal from '../ImageModal/ImageModal';
 import NotFoundMessage from '../NotFoundMessage/NotFoundMessage';
 import { fetchImages } from '../../fetch';
 import css from './App.module.css';
 import { Circles } from 'react-loader-spinner';
-import toast, { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 
 export default function App() {
   const [images, setImages] = useState([]);
@@ -21,17 +21,12 @@ export default function App() {
   const [modalLink, setModalLink] = useState('#');
   const [dataReceived, setDataReceived] = useState(false);
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    setQuery(e.target.input.value);
-    if (e.target.input.value.trim() === '') {
-      toast.error('You must fill the field');
-    }
+  function handleSubmit(inputQuery) {
+    setQuery(inputQuery);
     setPage(1);
     setImages([]);
     setTotal(0);
     setDataReceived(false);
-    e.target.reset();
   }
 
   useEffect(() => {
