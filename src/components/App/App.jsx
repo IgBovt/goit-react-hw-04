@@ -18,7 +18,7 @@ export default function App() {
   const [total, setTotal] = useState(0);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [modalLink, setModalLink] = useState('#');
-  const [request, setRequest] = useState(false);
+  const [dataReceived, setDataReceived] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -26,7 +26,7 @@ export default function App() {
     setPage(1);
     setImages([]);
     setTotal(0);
-    setRequest(true);
+    setDataReceived(false);
     e.target.reset();
   }
 
@@ -44,6 +44,7 @@ export default function App() {
           return [...prevImages, ...data.results];
         });
         setTotal(data.total_pages);
+        setDataReceived(true);
       } catch (error) {
         setError(true);
       } finally {
@@ -70,7 +71,7 @@ export default function App() {
     <>
       <SearchBar onSearch={handleSubmit} />
       {error && <ErrorMessage />}
-      {!spinner && request && images.length === 0 && <NotFoundMessage />}
+
       {images.length > 0 && (
         <ImageGallery
           images={images}
@@ -95,6 +96,8 @@ export default function App() {
         onRequestClose={closeModal}
         getLink={modalLink}
       />
+
+      {!spinner && dataReceived && images.length === 0 && <NotFoundMessage />}
     </>
   );
 }

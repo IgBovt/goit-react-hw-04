@@ -14,6 +14,5 @@ export async function fetchImages(searchQuery, page) {
       orientation: 'landscape',
     },
   });
-  console.log(response.data);
   return response.data;
 }
