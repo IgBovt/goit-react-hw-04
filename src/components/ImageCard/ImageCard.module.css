@@ -10,15 +10,22 @@
 }
 .textWrapper {
   display: flex;
+  flex-direction: column;
   font-size: 14px;
   color: gray;
   gap: 8px;
-  justify-content: space-between;
 }
 .likes,
 .tags {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: start;
   gap: 4px;
+}
+.tags {
+  align-items: start;
+}
+.tagsTitle {
+  display: flex;
+  align-items: center;
 }

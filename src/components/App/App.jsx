@@ -4,6 +4,7 @@ import SearchBar from '../SearchBar/SearchBar';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import LoadMoreButton from '../LoadMoreButton/LoadMoreButton';
 import ImageModal from '../ImageModal/ImageModal';
+import NotFoundMessage from '../NotFoundMessage/NotFoundMessage';
 import { fetchImages } from '../../fetch';
 import css from './App.module.css';
 import { Circles } from 'react-loader-spinner';
@@ -17,6 +18,7 @@ export default function App() {
   const [total, setTotal] = useState(0);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [modalLink, setModalLink] = useState('#');
+  const [request, setRequest] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -24,6 +26,7 @@ export default function App() {
     setPage(1);
     setImages([]);
     setTotal(0);
+    setRequest(true);
     e.target.reset();
   }
 
@@ -67,6 +70,7 @@ export default function App() {
     <>
       <SearchBar onSearch={handleSubmit} />
       {error && <ErrorMessage />}
+      {!spinner && request && images.length === 0 && <NotFoundMessage />}
       {images.length > 0 && (
         <ImageGallery
           images={images}

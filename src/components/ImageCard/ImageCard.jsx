@@ -24,8 +24,11 @@ export default function ImageCard({ image, openModal, getImage }) {
           <p>{image.likes}</p>
         </div>
         <div className={css.tags}>
-          <LiaHashtagSolid />
-          <p>Tags: </p>
+          <div className={css.tagsTitle}>
+            <LiaHashtagSolid />
+            <p>Tags: </p>
+          </div>
+
           <p>{image.tags.map(tag => '#' + tag.title).join(' ')}</p>
         </div>
       </div>
