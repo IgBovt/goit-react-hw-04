@@ -8,6 +8,7 @@ import NotFoundMessage from '../NotFoundMessage/NotFoundMessage';
 import { fetchImages } from '../../fetch';
 import css from './App.module.css';
 import { Circles } from 'react-loader-spinner';
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function App() {
   const [images, setImages] = useState([]);
@@ -23,6 +24,9 @@ export default function App() {
   function handleSubmit(e) {
     e.preventDefault();
     setQuery(e.target.input.value);
+    if (e.target.input.value.trim() === '') {
+      toast.error('You must fill the field');
+    }
     setPage(1);
     setImages([]);
     setTotal(0);
@@ -31,7 +35,7 @@ export default function App() {
   }
 
   useEffect(() => {
-    if (query === '') {
+    if (query.trim() === '') {
       return;
     }
     async function getData() {
@@ -98,6 +102,8 @@ export default function App() {
       />
 
       {!spinner && dataReceived && images.length === 0 && <NotFoundMessage />}
+
+      <Toaster position="top-right" />
     </>
   );
 }
